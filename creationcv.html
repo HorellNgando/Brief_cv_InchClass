@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+      <link rel="stylesheet" href="css/input.css">
+      <link rel="stylesheet" href="css/output.css">
+      <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css" rel="stylesheet" type="text/css" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+      <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        <nav class="bg-white shadow-md sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="flex justify-between h-full">
+                <!-- Logo à gauche -->
+                <div class="flex-shrink-0 flex items-center">
+                  <a href="#"><img class="size-20" src="image/Sans titre-29.png" alt="Logo"></a>
+                </div>
+        
+                <!-- Bouton de menu pour les petits écrans -->
+                <div class="flex items-center md:hidden">
+                  <button id="menu-button" class="text-gray-700 hover:text-gray-900 focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                  </button>
+                </div>
+        
+                <!-- Onglets et boutons pour les écrans larges -->
+                <div class="hidden md:flex md:items-center md:space-x-8">
+                  <a href="#" class="text-[#2E6E7A] hover:underline transition duration-300 ease-in-out hover:decoration-2 hover:underline-offset-4 hover:decoration-[#2E6E7A] px-3 py-2 rounded-md text-md font-medium">Accueil</a>
+                  <a href="#" class="text-[#2E6E7A] hover:underline transition duration-300 ease-in-out hover:decoration-2 hover:underline-offset-4 hover:decoration-[#2E6E7A] px-3 py-2 rounded-md text-md font-medium">Modèles</a>
+                  <a href="#" class="text-[#2E6E7A] hover:underline transition duration-300 ease-in-out hover:decoration-2 hover:underline-offset-4 hover:decoration-[#2E6E7A] px-3 py-2 rounded-md text-md font-medium">Tarifs</a>
+                  <a href="#" class="text-[#2E6E7A] hover:underline transition duration-300 ease-in-out hover:decoration-2 hover:underline-offset-4 hover:decoration-[#2E6E7A] px-3 py-2 rounded-md text-md font-medium">FAQs</a>
+                </div>
+        
+                <!-- Boutons à droite pour les écrans larges -->
+                <div class="hidden md:flex md:items-center md:space-x-4">
+                  <button class="bg-[#fff] hover:bg-[#58D2E9] text-[#2E6E7A] border-2  border-[#2E6E7A] font-bold py-2 px-4 rounded">
+                    Connexion
+                  </button>
+                  <button class="bg-[#3B8D9B] hover:bg-[#fff] text-white border-2  border-[#2E6E7A] hover:text-[#2E6E7A] font-bold py-2 px-4 rounded">
+                    Créer un CV
+                  </button>
+                </div>
+              </div>
+        
+              <!-- Menu déroulant pour les petits écrans -->
+              <div id="mobile-menu" class="hidden md:hidden">
+                <div class="flex flex-col space-y-2 pb-3">
+                  <a href="#" class="text-[#2E6E7A] hover:underline transition duration-300 ease-in-out hover:decoration-2 hover:underline-offset-4 hover:decoration-[#2E6E7A] px-3 py-2 rounded-md text-md font-medium">Accueil</a>
+                  <a href="#" class="text-[#2E6E7A] hover:underline transition duration-300 ease-in-out hover:decoration-2 hover:underline-offset-4 hover:decoration-[#2E6E7A] px-3 py-2 rounded-md text-md font-medium">Modèles</a>
+                  <a href="#" class="text-[#2E6E7A] hover:underline transition duration-300 ease-in-out hover:decoration-2 hover:underline-offset-4 hover:decoration-[#2E6E7A] px-3 py-2 rounded-md text-md font-medium">Tarifs</a>
+                  <a href="#" class="text-[#2E6E7A] hover:underline transition duration-300 ease-in-out hover:decoration-2 hover:underline-offset-4 hover:decoration-[#2E6E7A] px-3 py-2 rounded-md text-md font-medium">FAQs</a>
+                  <button class="bg-[#fff] hover:bg-[#58D2E9] text-[#2E6E7A] border-2  border-[#2E6E7A] font-bold py-2 px-4 rounded">
+                    Connexion
+                  </button>
+                  <button class="bg-[#3B8D9B] hover:bg-[#fff] text-white border-2  border-[#2E6E7A] hover:text-[#2E6E7A] font-bold py-2 px-4 rounded">
+                    Créer un CV
+                  </button>
+                </div>
+              </div>
+            </div>
+        </nav>
+
+        <main>
+          <h1 class="text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-bold text-[#2E6E7A] text-center my-8">
+            Créer un CV professionnel 
+          </h1>
+          <section class="creation cv flex justify-between">
+            <section class="formulaire  w-1/3">
+              <form action="" id="insertioninfos">
+                <!-- Informations personnelles -->
+                <div class="collapse collapse-plus ">
+                  <input type="radio" name="my-accordion-3" checked="checked" />
+                  <div class="collapse-title text-xl font-medium border-2 border-[#8B8B8C] my-6">Informations personnelles</div>
+                  <div class="collapse-content">    
+                        <!-- Photo -->
+                        <div class="mb-6">
+                          <label class="block text-md font-medium text-gray-700">Photo</label>
+                          <div class="mt-1 flex items-center">
+                            <!-- Aperçu de la photo -->
+                            <div id="photo-preview" class=" size-36  overflow-hidden bg-gray-100 mr-4">
+                              <img id="preview-image" class="h-full w-full object-cover" src="#" alt="Aperçu de la photo">
+                            </div>
+                  
+                            <!-- Bouton pour télécharger une photo -->
+                            <div>
+                              <input type="file" id="photo-upload" name="photo-upload" accept="image/*" class="sr-only">
+                              <label for="photo-upload" class="cursor-pointer bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                Télécharger une photo
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                    
+                        <!-- Nom de famille -->
+                        <div class="mb-6">
+                          <label for="nom" class="block text-md font-medium text-gray-700">Nom de famille</label>
+                          <input type="text" id="nom" name="nom" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        </div>
+
+                        <!-- Prénom -->
+                        <div class="mb-6">
+                          <label for="prenom" class="block text-md font-medium text-gray-700">Prénom</label>
+                          <input type="text" id="prenom" name="prenom" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        </div>
+
+                        <!-- Date de naissance -->
+                        <div class="mb-6">
+                          <label for="date-naissance" class="block text-md font-medium text-gray-700">Date de naissance</label>
+                          <input type="date" id="date-naissance" name="date-naissance" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        </div>
+
+                        <!-- Sexe -->
+                        <div class="mb-6">
+                          <label class="block text-md font-medium text-gray-700">Sexe</label>
+                          <div class="mt-1">
+                            <label class="inline-flex items-center">
+                              <input type="radio" name="sexe" value="homme" class="form-radio h-4 w-4 text-indigo-600">
+                              <span class="ml-2">Homme</span>
+                            </label>
+                            <label class="inline-flex items-center ml-6">
+                              <input type="radio" name="sexe" value="femme" class="form-radio h-4 w-4 text-indigo-600">
+                              <span class="ml-2">Femme</span>
+                            </label>
+                          </div>
+                        </div>
+
+                        <!-- Titre du poste -->
+                        <div class="mb-6">
+                          <label for="titre-poste" class="block text-md font-medium text-gray-700">Titre du poste</label>
+                          <input type="text" id="titre-poste" name="titre-poste" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        </div>
+
+                        <!-- Adresse Email -->
+                        <div class="mb-6">
+                          <label for="email" class="block text-md font-medium text-gray-700">Adresse Email</label>
+                          <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        </div>
+
+                        <!-- Adresse -->
+                        <div class="mb-6">
+                          <label for="adresse" class="block text-md font-medium text-gray-700">Adresse</label>
+                          <input type="text" id="adresse" name="adresse" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        </div>
+
+                        <!-- Numéro de téléphone -->
+                        <div class="mb-6">
+                          <label for="telephone" class="block text-md font-medium text-gray-700">Numéro de téléphone</label>
+                          <div class="mt-1 flex rounded-md shadow-sm">
+                            <!-- <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">+237</span> -->
+                            <input type="tel" id="indicator" name="indicator" class="flex-1 block w-1/4 px-3 py-2 rounded-md border border-gray-300  sm:text-sm" placeholder="+...">
+                            <input type="tel" id="telephone" name="telephone" class="flex-1 block w-3/4 px-3 py-2 rounded-md border border-gray-300  sm:text-sm">
+                          </div>
+                        </div>
+
+                        <!-- Situation actuelle -->
+                        <div class="mb-6">
+                          <label for="situation" class="block text-sm font-medium text-gray-700">Situation actuelle</label>
+                          <textarea id="situation" name="situation" rows="3" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="mb-6">
+                          <label for="description" class="block text-md font-medium text-gray-700">Description</label>
+                          <textarea id="description" name="description" rows="3" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+                        </div>
+                  </div>
+                </div>
+                <!-- Expériences Professionnelles -->
+                <div class="collapse collapse-plus ">
+                  <input type="radio" name="my-accordion-3" />
+                  <div class="collapse-title text-xl font-medium border-2 border-[#8B8B8C] my-6">Expériences Professionnelles</div>
+                  <div class="collapse-content" id="exp-container">
+                    <!-- Nom de l'entreprise -->
+                    <div class="mb-6">
+                      <label for="entreprise" class="block text-md font-medium text-gray-700">Nom de l'entreprise</label>
+                      <input type="text" id="entreprise" name="entreprise" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <!-- Poste occupé -->
+                    <div class="mb-6">
+                      <label for="poste" class="block text-md font-medium text-gray-700">Poste occupé</label>
+                      <input type="text" id="poste" name="poste" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <!-- Durée -->
+                    <div class="mb-6">
+                      <label for="duree" class="block text-md font-medium text-gray-700">Durée</label>
+                  
+                        <!-- Date de début -->
+                        <div class="mb-6 my-5">
+                          <label class="block text-sm font-medium text-gray-700">Date de début</label>
+                          <div class="mt-1 flex space-x-4">
+                            <select class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                              <option>Mois</option>
+                              <option>Janvier</option>
+                              <option>Février</option>
+                              <option>Mars</option>
+                              <option>Avril</option>
+                              <option>Mai</option>
+                              <option>Juin</option>
+                              <option>Juillet</option>
+                              <option>Août</option>
+                              <option>Septembre</option>
+                              <option>Octobre</option>
+                              <option>Novembre</option>
+                              <option>Décembre</option>
+                            </select>
+                            <select class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                              <option>Année</option>
+                              <option>2010</option>
+                              <option>2011</option>
+                              <option>2012</option>
+                              <option>2013</option>
+                              <option>2014</option>
+                              <option>2015</option>
+                              <option>2016</option>
+                              <option>2017</option>
+                              <option>2018</option>
+                              <option>2019</option>
+                              <option>2020</option>
+                              <option>2021</option>
+                              <option>2022</option>
+                              <option>2023</option>
+                              <option>2024</option>
+                            </select>
+                          </div>
+                        </div>
+                  
+                        <!-- Date de fin -->
+                        <div class="mb-6">
+                          <label class="block text-sm font-medium text-gray-700">Date de fin</label>
+                          <div class="mt-1 flex space-x-4">
+                            <select class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                              <option>Mois</option>
+                              <option>Janvier</option>
+                              <option>Février</option>
+                              <option>Mars</option>
+                              <option>Avril</option>
+                              <option>Mai</option>
+                              <option>Juin</option>
+                              <option>Juillet</option>
+                              <option>Août</option>
+                              <option>Septembre</option>
+                              <option>Octobre</option>
+                              <option>Novembre</option>
+                              <option>Décembre</option>
+                            </select>
+                            <select class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                              <option>Année</option>
+                              <option>2010</option>
+                              <option>2011</option>
+                              <option>2012</option>
+                              <option>2013</option>
+                              <option>2014</option>
+                              <option>2015</option>
+                              <option>2016</option>
+                              <option>2017</option>
+                              <option>2018</option>
+                              <option>2019</option>
+                              <option>2020</option>
+                              <option>2021</option>
+                              <option>2022</option>
+                              <option>2023</option>
+                              <option>2024</option>
+                            </select>
+                          </div>
+                        </div>
+                    </div>
+                    <!-- Missions -->
+                    <div class="mb-6">
+                      <label for="mission" class="block text-sm font-medium text-gray-700">Missions</label>
+                      <textarea id="mission" name="mission" rows="3" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+                    </div>
+
+                    <button onclick="addexp(event)" class="bg-[#3B8D9B] hover:bg-[#fff] text-white border-2  border-[#2E6E7A] hover:text-[#2E6E7A] font-bold py-2 px-4 rounded">Ajouter</button>
+                  </div>    
+                </div>
+                <!-- Formations -->
+                <div class="collapse collapse-plus">
+                  <input type="radio" name="my-accordion-3" />
+                  <div class="collapse-title text-xl font-medium border-2 border-[#8B8B8C] my-6">Formations</div>
+                  <div class="collapse-content" id="form-container">
+                    <!-- Diplômes -->
+                    <div class="mb-6">
+                      <label for="diplomes" class="block text-md font-medium text-gray-700">Diplômes</label>
+                      <input type="text" id="diplomes" name="diplomes" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <!-- Etablissement -->
+                    <div class="mb-6">
+                      <label for="etablissement" class="block text-md font-medium text-gray-700">Etablissement</label>
+                      <input type="text" id="etablissement" name="etablissement" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <!-- Année -->
+                    <div class="mb-6">
+                      <label for="anneediplome" class="block text-md font-medium text-gray-700">Année</label>
+                          <!-- Date de début -->
+                          <div class="mb-6 my-5">
+                            <label class="block text-sm font-medium text-gray-700">Date de début</label>
+                            <div class="mt-1 flex space-x-4">
+                              <select class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                <option>Mois</option>
+                                <option>Janvier</option>
+                                <option>Février</option>
+                                <option>Mars</option>
+                                <option>Avril</option>
+                                <option>Mai</option>
+                                <option>Juin</option>
+                                <option>Juillet</option>
+                                <option>Août</option>
+                                <option>Septembre</option>
+                                <option>Octobre</option>
+                                <option>Novembre</option>
+                                <option>Décembre</option>
+                              </select>
+                              <select class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                <option>Année</option>
+                                <option>2010</option>
+                                <option>2011</option>
+                                <option>2012</option>
+                                <option>2013</option>
+                                <option>2014</option>
+                                <option>2015</option>
+                                <option>2016</option>
+                                <option>2017</option>
+                                <option>2018</option>
+                                <option>2019</option>
+                                <option>2020</option>
+                                <option>2021</option>
+                                <option>2022</option>
+                                <option>2023</option>
+                                <option>2024</option>
+                              </select>
+                            </div>
+                          </div>
+                    
+                          <!-- Date de fin -->
+                          <div class="mb-6">
+                            <label class="block text-sm font-medium text-gray-700">Date de fin</label>
+                            <div class="mt-1 flex space-x-4">
+                              <select class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                <option>Mois</option>
+                                <option>Janvier</option>
+                                <option>Février</option>
+                                <option>Mars</option>
+                                <option>Avril</option>
+                                <option>Mai</option>
+                                <option>Juin</option>
+                                <option>Juillet</option>
+                                <option>Août</option>
+                                <option>Septembre</option>
+                                <option>Octobre</option>
+                                <option>Novembre</option>
+                                <option>Décembre</option>
+                              </select>
+                              <select class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                <option>Année</option>
+                                <option>2010</option>
+                                <option>2011</option>
+                                <option>2012</option>
+                                <option>2013</option>
+                                <option>2014</option>
+                                <option>2015</option>
+                                <option>2016</option>
+                                <option>2017</option>
+                                <option>2018</option>
+                                <option>2019</option>
+                                <option>2020</option>
+                                <option>2021</option>
+                                <option>2022</option>
+                                <option>2023</option>
+                                <option>2024</option>
+                              </select>
+                            </div>
+                          </div>
+                    </div>
+
+                    <button onclick="addform(event)" class="bg-[#3B8D9B] hover:bg-[#fff] text-white border-2  border-[#2E6E7A] hover:text-[#2E6E7A] font-bold py-2 px-4 rounded">Ajouter</button>
+                  </div>
+                </div>
+                <!-- competences -->
+                <div class="collapse collapse-plus">
+                  <input type="radio" name="my-accordion-3" />
+                  <div class="collapse-title text-xl font-medium border-2 border-[#8B8B8C] my-6">Compétences</div>
+                  <div class="collapse-content" id="compt-container">
+                    
+                    <!-- competences -->
+                    <div class="mb-6">
+                      <label for="competences" class="block text-md font-medium text-gray-700">Compétences</label>
+                      <input type="text" id="competences" name="competences" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <!-- niveau -->
+                    <div class="mb-6">
+                      <label for="niveaucompetence" class="block text-md font-medium text-gray-700">Niveau</label>
+                      <select class="select select-bordered w-full max-w-xs" name="niveaucompetence" id="niveaucompetence">
+                        <option disabled selected>choisit ton niveau</option>
+                        <option>Debutant</option>
+                        <option>Intermediaire</option>
+                        <option>Bien</option>
+                        <option>Très-Bien</option>
+                        <option>Excéllent</option>
+                      </select>
+                    </div>
+                    <button onclick="addCmpt(event)" class="bg-[#3B8D9B] hover:bg-[#fff] text-white border-2  border-[#2E6E7A] hover:text-[#2E6E7A] font-bold py-2 px-4 rounded">Ajouter</button>
+                  </div>
+                </div>
+                <!-- Références -->
+                <div class="collapse collapse-plus">
+                  <input type="radio" name="my-accordion-3" />
+                  <div class="collapse-title text-xl font-medium border-2 border-[#8B8B8C] my-6">Références</div>
+                  <div class="collapse-content">
+                    <!-- nom -->
+                    <div class="mb-6">
+                      <label for="nomreference" class="block text-md font-medium text-gray-700">Nom</label>
+                      <input type="text" id="nomreference" name="nomreference" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <!-- poste -->
+                    <div class="mb-6">
+                      <label for="postereference" class="block text-md font-medium text-gray-700">Poste</label>
+                      <input type="text" id="postereference" name="postereference" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <!-- Contact de la Référence -->
+                    <div class="mb-6">
+                      <label for="contactreference" class="block text-md font-medium text-gray-700">Contact de la Référence</label>
+                      <input type="tel" id="contactreference" name="contactreference" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                  </div>
+                </div>
+                <!-- loisirs -->
+                <div class="collapse collapse-plus">
+                  <input type="radio" name="my-accordion-3" />
+                  <div class="collapse-title text-xl font-medium border-2 border-[#8B8B8C] my-6">Centres d'interêt</div>
+                  <div class="collapse-content" id="loisir-container">
+                    <!-- nom -->
+                    <div class="mb-6">
+                      <label for="loisir" class="block text-md font-medium text-gray-700">Nom </label>
+                      <input type="text" id="loisir" name="loisir" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+
+                    <button onclick="addloisir(event)" class="bg-[#3B8D9B] hover:bg-[#fff] text-white border-2  border-[#2E6E7A] hover:text-[#2E6E7A] font-bold py-2 px-4 rounded">Ajouter</button>
+                  </div>
+                </div>
+                <!-- Langues -->
+                <div class="collapse collapse-plus">
+                  <input type="radio" name="my-accordion-3" />
+                  <div class="collapse-title text-xl font-medium border-2 border-[#8B8B8C] my-6">Langues</div>
+                  <div class="collapse-content" id="addlangue">
+                    <!-- Langues -->
+                    <div class="mb-6">
+                      <label for="langue" class="block text-md font-medium text-gray-700">Langue</label>
+                      <input type="text" id="langue" name="langue" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <!-- niveau -->
+                    <div class="mb-6">
+                      <label for="niveaulangue" class="block text-md font-medium text-gray-700">Niveau</label>
+                      <select class="select select-bordered w-full max-w-xs" name="niveaulangue" id="niveaulangue">
+                        <option disabled selected>choisit ton niveau</option>
+                        <option>Debutant</option>
+                        <option>Intermediaire</option>
+                        <option>Bien</option>
+                        <option>Très-Bien</option>
+                        <option>Excéllent</option>
+                      </select>
+                    </div>
+
+                    <button onclick="addlangue(event)" class="bg-[#3B8D9B] hover:bg-[#fff] text-white border-2  border-[#2E6E7A] hover:text-[#2E6E7A] font-bold py-2 px-4 rounded">Ajouter</button>
+                  </div>
+                </div>
+              </form>
+            </section>
+
+
+              <!-- previsualisation ou insertion dans le CV  -->
+            <section id="cvcreation" class=" w-2/3">
+              <section class="cvcreer flex w-full">
+                <!-- colonne gauche  -->
+                <div class="flex flex-col justify-around items-center w-1/3 pl-1 pb-10 pt-10 bg-[#161C26] ">
+                  <!-- photo -->
+                  <div class=" size-36 rounded-full  overflow-hidden bg-gray-100 mr-4 mb-6 ">
+                    <img id="cvpreview-image" class="h-full w-full object-cover" src="#" alt="">
+                  </div>
+                  <!-- infos personnelles -->
+                  <div>
+                      <div class="mt-10">
+                        <!-- email -->
+                      <div class="mb-6 flex items-center">
+                        <img src="image/icons8-email-30.png" alt="">
+                        <p id="cvemail" class="block text-md font-medium text-white mx-3"></p>
+                      </div>
+      
+                      <!-- telephone -->
+                      <div class="mb-6 flex items-center">
+                        <div>
+                          <img src="image/icons8-phone-30.png" alt="">
+                        </div>
+                        <div class="flex items-center">
+                          <p id="cvindicator" class="block text-md font-medium text-white mx-3"></p>
+                          <p id="cvtelephone" class="block text-md font-medium text-white mx-3"></p>
+                        </div>
+                      </div>
+      
+                      <!-- adresse -->
+                      <div class="mb-6 flex items-center capitalize">
+                        <img src="image/icons8-position-50.png" alt="" class="h-8 w-8">
+                        <p id="cvadresse" class="block text-md font-medium text-white mx-3"></p>
+                      </div>
+      
+                      <!-- age -->
+                      <div class="mb-6 flex items-center ">
+                        <img src="image/calendar_month_24dp_FFF_FILL0_wght400_GRAD0_opsz24.png" alt="" class="h-8 w-8">
+                        <p id="cvage" class="block text-md font-medium text-white mx-3"></p>
+                      </div>
+      
+                      <!-- sexe -->
+                      <div class="mb-6 flex items-center ">
+                        <img src="image/person_24dp_FFF_FILL0_wght400_GRAD0_opsz24.png" alt="" class="h-8 w-8">
+                        <p id="cvsexe" class="block text-md font-medium text-white mx-3"></p>
+                      </div>
+                    </div>
+                  </div>
+  
+                     <!-- competences  -->
+                  <div id="competences" class="mt-10 w-full">
+                    <div class="mb-5 flex items-center w-full  bg-[#2594D9]">
+                      <img src="image/settings_24dp_000_FILL0_wght400_GRAD0_opsz24.png" alt="" class="h-12 w-auto p-2 bg-white">
+                      <p id="" class="block text-md text-center font-medium text-white mx-3 ">Competences</p>
+                    </div>
+                    <div class="flex items-center p-2">
+                      <p id="cvcompetence" class="block text-md font-medium text-white mx-3 capitalize"></p>
+                      <progress class="hidden progress progress-info w-35 bg-white" value="50" max="100" id="progress"></progress>
+                    </div>
+                  </div>
+                   <!-- centres interet  -->
+                   <div id="loisirs" class="mt-10 w-full">
+                    <div class="mb-5 flex items-center w-full  bg-[#2594D9]">
+                      <img src="image/mood_24dp_000_FILL0_wght400_GRAD0_opsz24.png" alt="" class="h-12 w-auto p-1 bg-white">
+                      <p id="" class="block text-md text-center font-medium text-white mx-3 ">Centres d'intérêt</p>
+                    </div>
+                    <div class="flex items-center p-2" id="cvloisirs">
+                      <img src="image/humidity_high_24dp_FFF_FILL0_wght400_GRAD0_opsz24.png" alt="" class="hidden h-6 w-auto p-1">
+                      <p id="cvloisir" class="block text-md font-medium text-white mx-3 capitalize"></p>
+                    </div>
+                  </div>
+  
+                  <!-- langue -->
+                  <div id="language" class="mt-10 w-full">
+                    <div class="mb-5 flex items-center  bg-[#2594D9]">
+                      <img src="image/g_translate_24dp_000_FILL0_wght400_GRAD0_opsz24.png" alt="" class="h-12 w-auto p-1 bg-white">
+                      <p id="" class="block text-md text-center font-medium text-white mx-3 ">Langue</p>
+                    </div>
+                    <div class="flex items-center p-2">
+                      <p id="cvlangue" class="block text-md font-medium text-white mx-3 capitalize"></p>
+                      <progress class="hidden progress progress-info w-35 bg-white" value="80" max="100" id="progress"></progress>
+                    </div>
+                  </div>
+                </div>
+                <!-- colonne droite  -->
+                <div class=" w-2/3 p-0.5 pb-10 pt-10 bg-[#acbbd4] ">
+                  <div class="mb-6 flex items-center ">
+                    <h1 id="cvnom" class="block text-2xl font-medium text-[#2594D9] mx-3 uppercase"></h1>
+                    <h1 id="cvprenom" class="block text-2xl font-medium text-[#161C26] mx-3 uppercase"></h1>
+                  </div>
+  
+                  <div class="mb-6  ">
+                    <h2 id="cvtitreposte" class="block text-md font-bold mx-3 uppercase"></h2>
+                    <p id="cvdescription" class="block text-sm font-medium mx-3 capitalize"></p>
+                  </div>
+                  <!-- experiences  -->
+                  <div id="cvexperiences">
+                    <div class="mb-5 flex items-center w-full bg-[#161C26]">
+                      <img src="image/icons8-toolbox-50.png" alt="" class="h-12 w-auto p-2 bg-[#2594D9]">
+                      <p id="" class="block text-md text-center font-medium text-white mx-3 ">Expériences Professionnelles
+                    </div>
+                    <!-- entreprise et poste  -->
+                    <div class="flex items-center p-2">
+                      <h3 id="cventreprise" class="block text-lg font-bold text-black  border-r-2 border-black mr-3 px-3 uppercase"></h3>
+                      <h3 id="cvposte" class="block text-md font-bold text-black  capitalize"></h3>
+                    </div>
+                    <!-- date de debut et de fin -->
+                    <div class="flex items-center p-2">
+                      <div class="flex items-center pr-3">
+                        <p id="cvmoisdebut" class="block text-md font-medium text-black mx-3 "></p>
+                        <p id="cvanneedebut" class="block text-md font-medium text-black  "></p>
+                      </div>
+                      -
+                      <div class="flex items-center">
+                        <p id="cvmoisfin" class="block text-md font-medium text-black mx-3 "></p>
+                        <p id="cvanneefin" class="block text-md font-medium text-black  "></p>
+                      </div>
+                    </div>
+                    <!-- missions -->
+                    <div class="flex items-center">
+                      <p id="cvmission" class="block text-md font-medium text-black mx-5 capitalize"></p>
+                    </div>
+                  </div>
+                  <br><br>
+                  <!-- formations  -->
+                  <div id="cvformations">
+                    <div class="mb-5 flex items-center w-full  bg-[#161C26]">
+                      <img src="image/icons8-diploma-32.png" alt="" class="h-12 w-auto p-2 bg-[#2594D9]">
+                      <p id="" class="block text-md text-center font-medium text-white mx-3 ">Formations</p>
+                    </div>
+                    <!-- entreprise et poste  -->
+                    <div class="flex items-center p-2">
+                      <h3 id="cvecole" class="block text-lg font-bold text-black  border-r-2 border-black mr-3 px-3 uppercase"></h3>
+                      <h3 id="cvdiplome" class="block text-md font-bold text-black  capitalize"></h3>
+                    </div>
+                    <!-- date de debut et de fin -->
+                    <div class="flex items-center p-2">
+                      <div class="flex items-center pr-3">
+                        <p id="cvmoisdebutform" class="block text-md font-medium text-black mx-3 "></p>
+                        <p id="cvanneedebutform" class="block text-md font-medium text-black  "></p>
+                      </div>
+                      -
+                      <div class="flex items-center">
+                        <p id="cvmoisfinform" class="block text-md font-medium text-black mx-3 "></p>
+                        <p id="cvanneefinform" class="block text-md font-medium text-black  "></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </section>
+
+          </section>
+
+            <!-- Bouton pour exporter en PDF -->
+            <button onclick="previewPDF()" class="mt-6 bg-blue-500 text-white py-2 px-4 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+              Exporter en PDF
+            </button>
+        </main>
+        
+        <script>
+              // Script pour gérer l'affichage du menu déroulant
+              const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+        
+            menuButton.addEventListener('click', () => {
+              mobileMenu.classList.toggle('hidden');
+            });
+
+            // previsualisation de l'image 
+            const photoUpload = document.getElementById('photo-upload');
+            const photoPreview = document.getElementById('photo-preview');
+            const previewImage = document.getElementById('preview-image');
+
+            photoUpload.addEventListener('change', function(event) {
+              const file = event.target.files[0];
+              if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                  previewImage.src = e.target.result;
+                  photoPreview.classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+              } else {
+                previewImage.src = '#';
+                photoPreview.classList.add('hidden');
+              }
+            });
+            
+            //insertion de façon simultane dans le cv
+            const cvpreviewimage = document.getElementById('cvpreview-image');
+
+            photoUpload.addEventListener('change', function(event) {
+              const file = event.target.files[0];
+              if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                  cvpreviewimage.src = e.target.result;
+                  photoPreview.classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+              } else {
+                cvpreviewimage.src = '#';
+                photoPreview.classList.add('hidden');
+              }
+            });
+        </script>
+
+        <script>
+            // cv insertion des données sur le CV 
+          // Sélection des éléments du formulaire
+          const nomInput = document.getElementById('nom');
+          const prenomInput = document.getElementById('prenom');
+          const dateNaissanceInput = document.getElementById('date-naissance');
+          const sexeInputs = document.querySelectorAll('input[name="sexe"]');
+          const titrePosteInput = document.getElementById('titre-poste');
+          const emailInput = document.getElementById('email');
+          const adresseInput = document.getElementById('adresse');
+          const indicatorInput = document.getElementById('indicator');
+          const telephoneInput = document.getElementById('telephone');
+          const descriptionInput = document.getElementById('description');
+          const entrepriseInput = document.getElementById('entreprise');
+          const posteInput = document.getElementById('poste');
+          const moisDebutInput = document.querySelectorAll('select')[0]; // Premier menu déroulant pour le mois de début
+          const anneeDebutInput = document.querySelectorAll('select')[1]; // Deuxième menu déroulant pour l'année de début
+          const moisFinInput = document.querySelectorAll('select')[2]; // Troisième menu déroulant pour le mois de fin
+          const anneeFinInput = document.querySelectorAll('select')[3]; // Quatrième menu déroulant pour l'année de fin
+          const missionInput = document.getElementById('mission');
+          const diplomesInput = document.getElementById('diplomes');
+          const etablissementInput = document.getElementById('etablissement');
+          const anneediplomeInput = document.getElementById('anneediplome');
+          const competencesInput = document.getElementById('competences');
+          const niveaucompetenceInput = document.getElementById('niveaucompetence');
+          const loisirInput = document.getElementById('loisir');
+          const langueInput = document.getElementById('langue');
+          const niveauLangueInput = document.getElementById('niveaucompetence');
+          const moisform = document.querySelectorAll('select')[4]; // Premier menu déroulant pour le mois de début
+          const anneform = document.querySelectorAll('select')[5]; // Deuxième menu déroulant pour l'année de début
+          const mois2form = document.querySelectorAll('select')[6]; // Troisième menu déroulant pour le mois de fin
+          const annee2form = document.querySelectorAll('select')[7]; // Quatrième menu déroulant pour l'année de fin
+
+          // Sélection des éléments de prévisualisation du CV
+          const cvNom = document.getElementById('cvnom');
+          const cvPrenom = document.getElementById('cvprenom');
+          const cvDateNaissance = document.getElementById('cvage');
+          const cvSexe = document.getElementById('cvsexe'); 
+          const cvTitrePoste = document.getElementById('cvtitreposte');
+          const cvEmail = document.getElementById('cvemail');
+          const cvAdresse = document.getElementById('cvadresse');
+          const cvIndicator = document.getElementById('cvindicator');
+          const cvTelephone = document.getElementById('cvtelephone');
+          const cvDescription = document.getElementById('cvdescription');
+          const cvEntreprise = document.getElementById('cventreprise');
+          const cvPoste = document.getElementById('cvposte');
+          const cvMoisDebut = document.getElementById('cvmoisdebut');
+          const cvAnneeDebut = document.getElementById('cvanneedebut');
+          const cvMoisFin = document.getElementById('cvmoisfin');
+          const cvAnneeFin = document.getElementById('cvanneefin');
+          const cvMission = document.getElementById('cvmission');
+          const cvDiplome = document.getElementById('cvdiplome');
+          const cvEcole = document.getElementById('cvecole');
+          const cvCompetence = document.getElementById('cvcompetence');
+          const cvProgress = document.getElementById('progress');
+          const cvLoisir = document.getElementById('cvloisir');
+          const cvLangue = document.getElementById('cvlangue');
+          const cvProgressLangue = document.getElementById('progress');
+          const cvMoisDebutform = document.getElementById('cvmoisdebutform');
+          const cvAnneeDebutform = document.getElementById('cvanneedebutform');
+          const cvMoisFinform = document.getElementById('cvmoisfinform');
+          const cvAnneeFinform = document.getElementById('cvanneefinform');
+
+          // Fonction pour mettre à jour la prévisualisation du CV
+          function updateCV() {
+            // Informations personnelles
+            cvNom.textContent = nomInput.value || '[Nom]';
+            cvPrenom.textContent = prenomInput.value || '[Prénom]';
+            cvDateNaissance.textContent = dateNaissanceInput.value || '[Date de naissance]';
+            cvSexe.textContent = document.querySelector('input[name="sexe"]:checked')?.value || '[Sexe]';
+            cvTitrePoste.textContent = titrePosteInput.value || '[Titre du poste]';
+            cvEmail.textContent = emailInput.value || '[Email]';
+            cvAdresse.textContent = adresseInput.value || '[Adresse]';
+            cvIndicator.textContent = indicatorInput.value || '[Indicatif]';
+            cvTelephone.textContent = telephoneInput.value || '[Téléphone]';
+            cvDescription.textContent = descriptionInput.value || '[Description]';
+
+            // Expériences professionnelles
+            cvEntreprise.textContent = entrepriseInput.value || '[Entreprise]';
+            cvPoste.textContent = posteInput.value || '[Poste]';
+            cvMoisDebut.textContent = moisDebutInput.value || '[Mois de début]';
+            cvAnneeDebut.textContent = anneeDebutInput.value || '[Année de début]';
+            cvMoisFin.textContent = moisFinInput.value || '[Mois de fin]';
+            cvAnneeFin.textContent = anneeFinInput.value || '[Année de fin]';
+            cvMission.textContent = missionInput.value || '[Missions]';
+
+            // Formations
+            cvDiplome.textContent = diplomesInput.value || '[Diplôme]';
+            cvEcole.textContent = etablissementInput.value || '[Établissement]';
+            cvMoisDebutform.textContent = moisform.value || '[Mois de début]';
+            cvAnneeDebutform.textContent = anneform.value || '[Année de début]';
+            cvMoisFinform.textContent = mois2form.value || '[Mois de fin]';
+            cvAnneeFinform.textContent = annee2form.value || '[Année de fin]';
+
+            // Compétences
+            cvCompetence.textContent = competencesInput.value || '[Compétences]';
+            const niveau = niveaucompetenceInput.value;
+            if (niveau) {
+              cvProgress.value = getProgressValue(niveau); // Convertir le niveau en valeur de progression
+              cvProgress.classList.remove('hidden'); // Afficher la barre de progression
+            } else {
+              cvProgress.classList.add('hidden'); // Masquer la barre de progression si aucun niveau n'est sélectionné
+            }
+
+            // Centres d'intérêt
+            cvLoisir.textContent = loisirInput.value || '[Loisir]';
+
+            // Langues
+            cvLangue.textContent = langueInput.value || '[Langue]';
+            const niveauLangue = niveauLangueInput.value;
+            if (niveauLangue) {
+              cvProgressLangue.value = getProgressValue(niveauLangue); // Convertir le niveau en valeur de progression
+              cvProgressLangue.classList.remove('hidden'); // Afficher la barre de progression
+            } else {
+              cvProgressLangue.classList.add('hidden'); // Masquer la barre de progression si aucun niveau n'est sélectionné
+            }
+          }
+
+          // Fonction pour convertir le niveau en valeur de progression
+          function getProgressValue(niveau) {
+            switch (niveau) {
+              case 'Debutant':
+                return 20;
+              case 'Intermediaire':
+                return 40;
+              case 'Bien':
+                return 60;
+              case 'Très-Bien':
+                return 80;
+              case 'Excéllent':
+                return 100;
+              default:
+                return 0;
+            }
+          }
+
+          // Écouteurs d'événements pour mettre à jour le CV en temps réel
+          nomInput.addEventListener('input', updateCV);
+          prenomInput.addEventListener('input', updateCV);
+          dateNaissanceInput.addEventListener('input', updateCV);
+          sexeInputs.forEach(input => input.addEventListener('change', updateCV));
+          titrePosteInput.addEventListener('input', updateCV);
+          emailInput.addEventListener('input', updateCV);
+          adresseInput.addEventListener('input', updateCV);
+          indicatorInput.addEventListener('input', updateCV);
+          telephoneInput.addEventListener('input', updateCV);
+          descriptionInput.addEventListener('input', updateCV);
+          entrepriseInput.addEventListener('input', updateCV);
+          posteInput.addEventListener('input', updateCV);
+          moisDebutInput.addEventListener('change', updateCV);
+          anneeDebutInput.addEventListener('change', updateCV);
+          moisFinInput.addEventListener('change', updateCV);
+          anneeFinInput.addEventListener('change', updateCV);
+          missionInput.addEventListener('input', updateCV);
+          diplomesInput.addEventListener('input', updateCV);
+          etablissementInput.addEventListener('input', updateCV);
+          anneediplomeInput.addEventListener('input', updateCV);
+          competencesInput.addEventListener('input', updateCV);
+          niveaucompetenceInput.addEventListener('change', updateCV);
+          loisirInput.addEventListener('input', updateCV);
+          langueInput.addEventListener('input', updateCV);
+          niveauLangueInput.addEventListener('change', updateCV);
+
+          // Initialisation de la prévisualisation
+          updateCV();
+        </script>
+        <script>
+          let cptCmpt = 1;
+          function addCmpt(e) {
+          e.preventDefault();
+          cptCmpt++;
+          let comptField = document.getElementById("compt-container");
+          let div = document.createElement("div");
+          div.innerHTML = `<div class="mb-6">
+            <label for="competences" class="block text-md font-medium text-gray-700">Compétences</label>
+            <input type="text" id=${"competences"+cptCmpt} name="competences" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          </div>
+          <!-- niveau -->
+          <div class="mb-6">
+            <label for="niveaucompetence" class="block text-md font-medium text-gray-700">Niveau</label>
+            <select class="select select-bordered w-full max-w-xs" name="niveaucompetence" id=${"niveaucompetence"+cptCmpt}>
+              <option disabled selected>choisit ton niveau</option>
+              <option>Debutant</option>
+              <option>Intermediaire</option>
+              <option>Bien</option>
+              <option>Très-Bien</option>
+              <option>Excéllent</option>
+            </select>
+          </div>`;
+          comptField.append(div);
+          }
+
+          let cptform = 1;
+          function addform(e) {
+          e.preventDefault();
+          cptform++;
+          let formField = document.getElementById("form-container");
+          let div = document.createElement("div");
+          div.innerHTML = `<!-- Diplômes -->
+                    <div class="mb-6">
+                      <label for="diplomes" class="block text-md font-medium text-gray-700">Diplômes</label>
+                      <input type="text" id=${"diplomes"+cptform} name="diplomes" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <!-- Etablissement -->
+                    <div class="mb-6">
+                      <label for="etablissement" class="block text-md font-medium text-gray-700">Etablissement</label>
+                      <input type="text" id=${"etablissement"+cptform} name="etablissement" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <!-- Année -->
+                    <div class="mb-6">
+                      <label for="anneediplome" class="block text-md font-medium text-gray-700">Année</label>
+                          <!-- Date de début -->
+                          <div class="mb-6 my-5">
+                            <label class="block text-sm font-medium text-gray-700">Date de début</label>
+                            <div class="mt-1 flex space-x-4">
+                              <select class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                <option>Mois</option>
+                                <option>Janvier</option>
+                                <option>Février</option>
+                                <option>Mars</option>
+                                <option>Avril</option>
+                                <option>Mai</option>
+                                <option>Juin</option>
+                                <option>Juillet</option>
+                                <option>Août</option>
+                                <option>Septembre</option>
+                                <option>Octobre</option>
+                                <option>Novembre</option>
+                                <option>Décembre</option>
+                              </select>
+                              <select class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                <option>Année</option>
+                                <option>2010</option>
+                                <option>2011</option>
+                                <option>2012</option>
+                                <option>2013</option>
+                                <option>2014</option>
+                                <option>2015</option>
+                                <option>2016</option>
+                                <option>2017</option>
+                                <option>2018</option>
+                                <option>2019</option>
+                                <option>2020</option>
+                                <option>2021</option>
+                                <option>2022</option>
+                                <option>2023</option>
+                                <option>2024</option>
+                              </select>
+                            </div>
+                          </div>
+                    
+                          <!-- Date de fin -->
+                          <div class="mb-6">
+                            <label class="block text-sm font-medium text-gray-700">Date de fin</label>
+                            <div class="mt-1 flex space-x-4">
+                              <select class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                <option>Mois</option>
+                                <option>Janvier</option>
+                                <option>Février</option>
+                                <option>Mars</option>
+                                <option>Avril</option>
+                                <option>Mai</option>
+                                <option>Juin</option>
+                                <option>Juillet</option>
+                                <option>Août</option>
+                                <option>Septembre</option>
+                                <option>Octobre</option>
+                                <option>Novembre</option>
+                                <option>Décembre</option>
+                              </select>
+                              <select class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                <option>Année</option>
+                                <option>2010</option>
+                                <option>2011</option>
+                                <option>2012</option>
+                                <option>2013</option>
+                                <option>2014</option>
+                                <option>2015</option>
+                                <option>2016</option>
+                                <option>2017</option>
+                                <option>2018</option>
+                                <option>2019</option>
+                                <option>2020</option>
+                                <option>2021</option>
+                                <option>2022</option>
+                                <option>2023</option>
+                                <option>2024</option>
+                              </select>
+                            </div>
+                          </div>
+                    </div>`;
+          formField.append(div);
+          }
+        
+          let cptexp = 1;
+          function addexp(e) {
+          e.preventDefault();
+          cptexp++;
+          let expField = document.getElementById("exp-container");
+          let div = document.createElement("div");
+          div.innerHTML = `<!-- Nom de l'entreprise -->
+                    <div class="mb-6">
+                      <label for="entreprise" class="block text-md font-medium text-gray-700">Nom de l'entreprise</label>
+                      <input type="text" id=${"entreprise"+cptexp} name="entreprise" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div class="mb-6">
+                    <label for="poste" class="block text-md font-medium text-gray-700">Poste occupé</label>
+                    <input type="text" id=${"poste"+cptexp} name="poste" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <!-- Durée -->
+                    <div class="mb-6">
+                      <label for="duree" class="block text-md font-medium text-gray-700">Durée</label>
+                  
+                        <!-- Date de début -->
+                        <div class="mb-6 my-5">
+                          <label class="block text-sm font-medium text-gray-700">Date de début</label>
+                          <div class="mt-1 flex space-x-4">
+                            <select class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                              <option>Mois</option>
+                              <option>Janvier</option>
+                              <option>Février</option>
+                              <option>Mars</option>
+                              <option>Avril</option>
+                              <option>Mai</option>
+                              <option>Juin</option>
+                              <option>Juillet</option>
+                              <option>Août</option>
+                              <option>Septembre</option>
+                              <option>Octobre</option>
+                              <option>Novembre</option>
+                              <option>Décembre</option>
+                            </select>
+                            <select class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                              <option>Année</option>
+                              <option>2010</option>
+                              <option>2011</option>
+                              <option>2012</option>
+                              <option>2013</option>
+                              <option>2014</option>
+                              <option>2015</option>
+                              <option>2016</option>
+                              <option>2017</option>
+                              <option>2018</option>
+                              <option>2019</option>
+                              <option>2020</option>
+                              <option>2021</option>
+                              <option>2022</option>
+                              <option>2023</option>
+                              <option>2024</option>
+                            </select>
+                          </div>
+                        </div>
+                  
+                        <!-- Date de fin -->
+                        <div class="mb-6">
+                          <label class="block text-sm font-medium text-gray-700">Date de fin</label>
+                          <div class="mt-1 flex space-x-4">
+                            <select class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                              <option>Mois</option>
+                              <option>Janvier</option>
+                              <option>Février</option>
+                              <option>Mars</option>
+                              <option>Avril</option>
+                              <option>Mai</option>
+                              <option>Juin</option>
+                              <option>Juillet</option>
+                              <option>Août</option>
+                              <option>Septembre</option>
+                              <option>Octobre</option>
+                              <option>Novembre</option>
+                              <option>Décembre</option>
+                            </select>
+                            <select class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                              <option>Année</option>
+                              <option>2010</option>
+                              <option>2011</option>
+                              <option>2012</option>
+                              <option>2013</option>
+                              <option>2014</option>
+                              <option>2015</option>
+                              <option>2016</option>
+                              <option>2017</option>
+                              <option>2018</option>
+                              <option>2019</option>
+                              <option>2020</option>
+                              <option>2021</option>
+                              <option>2022</option>
+                              <option>2023</option>
+                              <option>2024</option>
+                            </select>
+                          </div>
+                        </div>
+                    </div>
+                    <!-- Missions -->
+                    <div class="mb-6">
+                      <label for="mission" class="block text-sm font-medium text-gray-700">Missions</label>
+                      <textarea id=${"mission"+cptexp} name="mission" rows="3" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+                    </div>`;
+          expField.append(div);
+          }
+
+          let cptlois = 1;
+          function addloisir(e) {
+          e.preventDefault();
+          cptlois++;
+          let loisField = document.getElementById("loisir-container");
+          let div = document.createElement("div");
+          div.innerHTML = `<!-- nom -->
+                    <div class="mb-6">
+                      <label for="loisir" class="block text-md font-medium text-gray-700">Nom </label>
+                      <input type="text" id=${"loisir"+cptlois} name="loisir" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>`;
+          loisField.append(div);
+          }
+        
+          let cptlangue = 1;
+          function addlangue(e) {
+          e.preventDefault();
+          cptlangue++;
+          let langueField = document.getElementById("langue-container");
+          let div = document.createElement("div");
+          div.innerHTML = `<!-- Langues -->
+                    <div class="mb-6">
+                      <label for="langue" class="block text-md font-medium text-gray-700">Langue</label>
+                      <input type="text" id=${"langue"+cptlangue} name="langue" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <!-- niveau -->
+                    <div class="mb-6">
+                      <label for="niveaulangue" class="block text-md font-medium text-gray-700">Niveau</label>
+                      <select class="select select-bordered w-full max-w-xs" name="niveaulangue" id=${"niveaulangue"+cptlangue}>
+                        <option disabled selected>choisit ton niveau</option>
+                        <option>Debutant</option>
+                        <option>Intermediaire</option>
+                        <option>Bien</option>
+                        <option>Très-Bien</option>
+                        <option>Excéllent</option>
+                      </select>
+                    </div>`;
+          langueField.append(div);
+          }
+        </script>
+        <script>
+          // jsPDF pour générer un PDF à partir du contenu de la prévisualisation du CV
+          function previewPDF() {
+              const $element = $('#cvcreation');
+              const options = {
+                  margin: 10,
+                  filename: 'mon-cv.pdf',
+                  image: { type: 'jpeg', quality: 1 },
+                  html2canvas: { scale: 4, useCORS: true },
+                  jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+              };
+          
+              html2pdf().set(options).from($element[0]).outputPdf('bloburl').then((pdfUrl) => {
+              window.open(pdfUrl, '_blank');
+              });
+          }   
+        </script>
+    </body>
+</html>
+
