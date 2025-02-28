@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="input.css">
-    <script src="https://cdn.tailwindcss.com"></script>^
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Accueil</title>
 </head>
 <body class="bg-gray-100">
@@ -65,7 +66,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="text-center py-16 rounded-tl-full rounded-br-full bg-[url('/image/Image3_OpRpisX.original.jpg')] h-3xl bg-cover bg-center">
+    <section class="text-center py-16 rounded-tl-full rounded-br-72  bg-[url('/image/Image3_OpRpisX.original.jpg')] h-4xl bg-cover bg-center">
         <h1 class="text-3xl font-bold">Creer un CV professionnel</h1>
         <p class="text-gray-600 mt-2">Remplissez les cases, choisissez un modèle et telechargez votre CV en quelques minutes.</p>
         <a href="creationcv.html"><button class="mt-4 px-6 py-3 bg-teal-500 text-white rounded-lg hover:bg-teal-600">Creer un CV</button></a>
@@ -74,7 +75,7 @@
         <p class="text-xl mt-4 font-bold bg-white" >Plus de <span class="bg-teal-600 text-white px-2 py-1 rounded">10 000 CV</span> créés depuis 2024</p>
       </div>
     <!-- comment ça marche? -->
-    <section class="py-16 px-44 bg-[#2E6E7A] rounded-tl-full rounded-br-full">
+    <section class="py-16 px-44 bg-[#2E6E7A] rounded-tl-72 rounded-br-full">
         <div class="text-center mb-10 animate-fade-in">
             <h2 class="text-3xl font-bold text-white">Comment ça marche ?</h2>
         </div>
@@ -136,35 +137,89 @@
 
 
     <!-- Pourquoi nous choisir -->
-    <section class="py-16 px-6 bg-blue-100">
-        <h2 class="text-2xl font-bold text-center">Pourquoi nous choisir ?</h2>
-        <p class="mt-4 text-gray-700 text-center">Nous offrons un service facile, rapide et efficace pour creer votre CV.</p>
-        <div class="mt-6 text-lg">
-            <p><strong>Facilité d’utilisation :</strong> Un outil intuitif, même sans expérience.</p>
-            <p><strong>Modèles personnalisables :</strong> Large choix de modèles modifiables.</p>
-            <p><strong>Résultats rapides :</strong> Créez un CV en quelques minutes seulement.</p>
-        </div>
-    </section>
+    <div class="bg-teal-100 py-12">
+        <div class="container mx-auto  bg-white rounded-lg shadow-md overflow-hidden">
 
-    <section class="py-16 bg-gray-100 animate-fade-in">
-        <div class="text-center mb-10">
-            <h2 class="text-3xl font-bold">Évaluations</h2>
+            <div class="flex justify-between items-center bg-[#58D2E9]">
+                <!-- Top Section (Blue Background) -->
+                <div class=" px-8 py-6 rounded-t-lg w-2/3">
+                    <h1 class="text-2xl font-bold text-black mb-4">Pourquoi nous choisir ?</h1>
+                    <p class="text-black leading-relaxed">Notre outil de création de CV en ligne est conçu pour vous aider à créer un CV professionnel et personnalisé en quelques minutes seulement. Voici pourquoi nous sommes la meilleure option pour vous:</p>
+                    <ul class="list-none pl-5 mt-4 text-black">
+                        <li class="mb-2 before:content-['-'] before:mr-2">Facilité d'utilisation: notre outil est intuitif et facile à utiliser, même si vous n'avez pas d'expérience en création de CV.</li>
+                        <li class="mb-2 before:content-['-'] before:mr-2">Modèles de CV personnalisables: nous proposons une variété de modèles de CV qui peuvent être personnalisés pour correspondre à vos besoins et à votre style.</li>
+                        <li class="before:content-['-'] before:mr-2">Résultats rapides: avec notre outil, vous pouvez créer un CV professionnel en quelques minutes seulement.</li>
+                    </ul>
+                </div>
+
+                <!-- Image Section (Top Right) -->
+                <div class="w-1/3 h-full">
+                    <img src="image/imgs.jpg" alt="CV Illustration" class="w-48 h-48 rounded-full object-cover">
+                </div>
+            </div>
+
+            <!-- Evaluations Section (Bottom) -->
+            <div class="px-8 py-6">
+                <h2 class="text-xl font-semibold text-teal-800 mb-4">Évaluations</h2>
+                <div class="grid grid-cols-3 gap-4">
+
+                    <!-- Evaluation Card 1 -->
+                    <div class="bg-[#2E6E7A] rounded-lg p-4">
+                        <p class="text-sm font-bold text-white">Melvine POSSI</p>
+                        <p class="text-xs text-white">Bonne plate-forme pour création de cv; ils sont une possibilité de vous mettre en contact avec des employeurs qui recherchent, et suivre vos candidatures.</p>
+                        <div class="mt-2">
+                            <span class="star">★★★★★</span>
+                        </div>
+                    </div>
+
+                    <!-- Evaluation Card 2 -->
+                    <div class="bg-[#2E6E7A] rounded-lg p-4">
+                        <p class="text-sm font-bold text-white">Kevin TONBONG</p>
+                        <p class="text-xs text-white">Super simple d'utilisation, meilleur site de création de CV! Je recommande.</p>
+                        <div class="mt-2">
+                            <span class="star">★★★★★</span>
+                        </div>
+                    </div>
+
+                    <!-- Evaluation Card 3 -->
+                    <div class="bg-[#2E6E7A] rounded-lg p-4">
+                        <p class="text-sm font-bold text-white">Florine YANKAM</p>
+                        <p class="text-xs text-white">N'ayant aucune compétences en creation de CV, j'ai pu bénéficier d'un accompagnement de qualité.</p>
+                        <div class="mt-2">
+                            <span class="star">★★★★☆</span>
+                        </div>
+                    </div>
+
+                    <!-- Evaluation Card 4 -->
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <p class="text-sm font-semibold text-teal-700">More TATCHOU</p>
+                        <p class="text-xs text-gray-600">Bonne plate-forme pour création de cv; ils sont une possibilité de vous mettre en contact avec des employeurs qui recherchent, et suivre vos candidatures.</p>
+                        <div class="mt-2">
+                            <span class="star">★★★★★</span>
+                        </div>
+                    </div>
+
+                     <!-- Evaluation Card 5 -->
+                     <div class="bg-gray-50 rounded-lg p-4">
+                        <p class="text-sm font-semibold text-teal-700">Horel NGANDO</p>
+                        <p class="text-xs text-gray-600">Site bien fait et facile d'utilisation !</p>
+                        <div class="mt-2">
+                            <span class="star">★★★★★</span>
+                        </div>
+                    </div>
+
+                     <!-- Evaluation Card 6 -->
+                     <div class="bg-gray-50 rounded-lg p-4">
+                        <p class="text-sm font-semibold text-teal-700">ARSHDEEP SINGH ΚΑΙΝΤΗ</p>
+                        <p class="text-xs text-gray-600">J'aime vraiment l'application et je suis très content !</p>
+                        <div class="mt-2">
+                            <span class="star">★★★★★</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="container mx-auto grid md:grid-cols-3 gap-6 px-6">
-            <div class="bg-white p-6 rounded-lg shadow hover:scale-105 transition duration-300">
-                <p>Super plateforme pour créer des CV.</p>
-                <p class="font-bold">★★★★★</p>
-            </div>
-            <div class="bg-white p-6 rounded-lg shadow hover:scale-105 transition duration-300">
-                <p>Facile et rapide à utiliser !</p>
-                <p class="font-bold">★★★★☆</p>
-            </div>
-            <div class="bg-white p-6 rounded-lg shadow hover:scale-105 transition duration-300">
-                <p>Je suis très satisfait de mon CV.</p>
-                <p class="font-bold">★★★★★</p>
-            </div>
-        </div>
-    </section>
+    </div>
 
     <footer class="bg-gray-800 text-white py-12">
         <div class="container mx-auto px-6">
