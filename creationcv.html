@@ -103,18 +103,21 @@
                         <div class="mb-6">
                           <label for="nom" class="block text-md font-medium text-gray-700">Nom de famille</label>
                           <input type="text" id="nom" name="nom" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                          <span class="error-message" id="nameError"></span>
                         </div>
 
                         <!-- Prénom -->
                         <div class="mb-6">
                           <label for="prenom" class="block text-md font-medium text-gray-700">Prénom</label>
                           <input type="text" id="prenom" name="prenom" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                          <span class="error-message" id="nameError"></span>
                         </div>
 
                         <!-- Date de naissance -->
                         <div class="mb-6">
                           <label for="date-naissance" class="block text-md font-medium text-gray-700">Date de naissance</label>
                           <input type="date" id="date-naissance" name="date-naissance" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                          <span class="error-message" id="birthdateError"></span>
                         </div>
 
                         <!-- Sexe -->
@@ -142,12 +145,14 @@
                         <div class="mb-6">
                           <label for="email" class="block text-md font-medium text-gray-700">Adresse Email</label>
                           <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                          <span class="error-message" id="emailError"></span>
                         </div>
 
                         <!-- Adresse -->
                         <div class="mb-6">
                           <label for="adresse" class="block text-md font-medium text-gray-700">Adresse</label>
                           <input type="text" id="adresse" name="adresse" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                          <span class="error-message" id="phoneError"></span>
                         </div>
 
                         <!-- Numéro de téléphone -->
@@ -170,6 +175,7 @@
                         <div class="mb-6">
                           <label for="description" class="block text-md font-medium text-gray-700">Description</label>
                           <textarea id="description" name="description" rows="3" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+                          <span class="error-message" id="messageError"></span>
                         </div>
                   </div>
                 </div>
@@ -636,9 +642,14 @@
               <button onclick="previewPDF()" class="mt-6 bg-blue-500 text-white py-2 px-4 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                 Exporter en PDF
               </button>
-          </main>
+
+              <button type="submit" class="mt-6 bg-blue-500 text-white py-2 px-4 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                verifier
+              </button>
             </div>
-        
+          </main>
+            
+            <!-- photo et bouton burger  -->
         <script>
               // Script pour gérer l'affichage du menu déroulant
               const menuButton = document.getElementById('menu-button');
@@ -686,7 +697,7 @@
               }
             });
         </script>
-
+          <!-- insertion des éléments dans le cv en temps réel  -->
         <script>
             // cv insertion des données sur le CV 
           // Sélection des éléments du formulaire
@@ -857,6 +868,7 @@
           // Initialisation de la prévisualisation
           updateCV();
         </script>
+        <!-- fonction pour dupliquer les sections d'insertions  -->
         <script>
           let cptCmpt = 1;
           function addCmpt(e) {
@@ -1132,6 +1144,7 @@
           langueField.append(div);
           }
         </script>
+        <!-- exportation en pdf  -->
         <script>
           // jsPDF pour générer un PDF à partir du contenu de la prévisualisation du CV
           function previewPDF() {
@@ -1148,6 +1161,81 @@
               window.open(pdfUrl, '_blank');
               });
           }   
+        </script>
+          <!-- contraintes de validation  -->
+        <script>
+          document.getElementById("insertioninfos").addEventListener("submit", function (event) {
+          event.preventDefault(); // Empêche la soumission du formulaire
+
+          // Réinitialiser les messages d'erreur
+          const errorMessages = document.querySelectorAll(".error-message");
+          errorMessages.forEach((error) => (error.textContent = ""));
+
+          let isValid = true;
+
+          // Validation des champs en fonction de leur type
+          const inputs = document.querySelectorAll("input, textarea");
+
+          inputs.forEach((input) => {
+            const value = input.value.trim();
+            const type = input.type;
+            const id = input.id;
+
+            // Champ Texte (obligatoire)
+            if (type === "text" && value === "") {
+              document.getElementById(`${id}Error`).textContent = "Ce champ est obligatoire.";
+              isValid = false;
+            }
+
+            // Champ Email (format email)
+            if (type === "email") {
+              const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+              if (!emailPattern.test(value)) {
+                document.getElementById(`${id}Error`).textContent = "Veuillez entrer un email valide.";
+                isValid = false;
+              }
+            }
+
+            // Champ Téléphone (format téléphone)
+            if (type === "tel") {
+              const phonePattern = /^[0-9]{10}$/;
+              if (!phonePattern.test(value)) {
+                document.getElementById(`${id}Error`).textContent = "Le numéro de téléphone doit contenir 10 chiffres.";
+                isValid = false;
+              }
+            }
+
+            // Champ Nombre (âge entre 18 et 65)
+            if (type === "number") {
+              const age = parseInt(value, 10);
+              if (isNaN(age) || age < 18 || age > 65) {
+                document.getElementById(`${id}Error`).textContent = "L'âge doit être compris entre 18 et 65 ans.";
+                isValid = false;
+              }
+            }
+
+            // Champ Date (date valide)
+            if (type === "date") {
+              const date = new Date(value);
+              if (isNaN(date.getTime())) {
+                document.getElementById(`${id}Error`).textContent = "Veuillez entrer une date valide.";
+                isValid = false;
+              }
+            }
+
+            // Champ Textarea (obligatoire)
+            if (input.tagName === "TEXTAREA" && value === "") {
+              document.getElementById(`${id}Error`).textContent = "Ce champ est obligatoire.";
+              isValid = false;
+            }
+          });
+
+          // Si tout est valide, soumettre le formulaire
+          if (isValid) {
+            alert("Formulaire soumis avec succès !");
+            this.submit(); // Soumettre le formulaire
+          }
+});
         </script>
     </body>
 </html>

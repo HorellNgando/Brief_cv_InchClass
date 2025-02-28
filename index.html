@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de CV</title>
+
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Feuille de style personnalisée (optionnel) -->
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body class="bg-gray-100">
+
+     <!-- Header -->
+     <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between h-full">
+            <!-- Logo à gauche -->
+            <div class="flex-shrink-0 flex items-center">
+              <a href="home.html"><img class="size-20" src="image/Sans titre-29.png" alt="Logo"></a>
+            </div>
+    
+            <!-- Bouton de menu pour les petits écrans -->
+            <div class="flex items-center md:hidden">
+              <button id="menu-button" class="text-gray-700 hover:text-gray-900 focus:outline-none">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+              </button>
+            </div>
+    
+            <!-- Onglets et boutons pour les écrans larges -->
+            <div class="hidden md:flex md:items-center md:space-x-8">
+              <a href="#" class="text-[#2E6E7A] hover:underline transition duration-300 ease-in-out hover:decoration-2 hover:underline-offset-4 hover:decoration-[#2E6E7A] px-3 py-2 rounded-md text-md font-medium">Accueil</a>
+              <a href="#" class="text-[#2E6E7A] hover:underline transition duration-300 ease-in-out hover:decoration-2 hover:underline-offset-4 hover:decoration-[#2E6E7A] px-3 py-2 rounded-md text-md font-medium">Modèles</a>
+              <a href="#" class="text-[#2E6E7A] hover:underline transition duration-300 ease-in-out hover:decoration-2 hover:underline-offset-4 hover:decoration-[#2E6E7A] px-3 py-2 rounded-md text-md font-medium">Tarifs</a>
+              <a href="#" class="text-[#2E6E7A] hover:underline transition duration-300 ease-in-out hover:decoration-2 hover:underline-offset-4 hover:decoration-[#2E6E7A] px-3 py-2 rounded-md text-md font-medium">FAQs</a>
+            </div>
+    
+            <!-- Boutons à droite pour les écrans larges -->
+            <div class="hidden md:flex md:items-center md:space-x-4">
+              <button class="bg-[#fff] hover:bg-[#58D2E9] text-[#2E6E7A] border-2  border-[#2E6E7A] font-bold py-2 px-4 rounded">
+                Connexion
+              </button>
+              <button class="bg-[#3B8D9B] hover:bg-[#fff] text-white border-2  border-[#2E6E7A] hover:text-[#2E6E7A] font-bold py-2 px-4 rounded">
+                Créer un CV
+              </button>
+            </div>
+          </div>
+    
+          <!-- Menu déroulant pour les petits écrans -->
+          <div id="mobile-menu" class="hidden md:hidden">
+            <div class="flex flex-col space-y-2 pb-3">
+              <a href="#" class="text-[#2E6E7A] hover:underline transition duration-300 ease-in-out hover:decoration-2 hover:underline-offset-4 hover:decoration-[#2E6E7A] px-3 py-2 rounded-md text-md font-medium">Accueil</a>
+              <a href="#" class="text-[#2E6E7A] hover:underline transition duration-300 ease-in-out hover:decoration-2 hover:underline-offset-4 hover:decoration-[#2E6E7A] px-3 py-2 rounded-md text-md font-medium">Modèles</a>
+              <a href="#" class="text-[#2E6E7A] hover:underline transition duration-300 ease-in-out hover:decoration-2 hover:underline-offset-4 hover:decoration-[#2E6E7A] px-3 py-2 rounded-md text-md font-medium">Tarifs</a>
+              <a href="#" class="text-[#2E6E7A] hover:underline transition duration-300 ease-in-out hover:decoration-2 hover:underline-offset-4 hover:decoration-[#2E6E7A] px-3 py-2 rounded-md text-md font-medium">FAQs</a>
+              <button class="bg-[#fff] hover:bg-[#58D2E9] text-[#2E6E7A] border-2  border-[#2E6E7A] font-bold py-2 px-4 rounded">
+                Connexion
+              </button>
+              <button class="bg-[#3B8D9B] hover:bg-[#fff] text-white border-2  border-[#2E6E7A] hover:text-[#2E6E7A] font-bold py-2 px-4 rounded">
+                Créer un CV
+              </button>
+            </div>
+          </div>
+        </div>
+    </nav>
+
+    <!-- RESPONSIVE TAILWIND -->
+    </div>
+    <div class="container mx-auto p-4">
+
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <!-- FORMULAIRE -->
+                <h1 class="text-2xl font-bold mb-4 black text-black">Générateur de CV</h1>
+                <!-- CHOISIR UN THEME -->
+                <div class="">
+                    <label for="theme" class="block text-blue-700 font-bold">Choisir un thème</label>
+                    <select id="theme"
+                        class=" px-2 py-1 border rounded-lg shadow-md md-4 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-blue-700 ">
+                        <option value="default">Défaut</option>
+                        <option value="classic">Classique</option>
+                        <option value="modern">Moderne</option>
+
+                    </select>
+                    <!-- INPUT IMAGE -->
+                    <!-- <div class="my-5">
+                            <label class="block text-sm font-medium text-gray-700">Photo de Profil</label>
+                            <input type="file" id="profile_picture" name="profile_picture" placeholder="Photo de profil..." class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                        </div>
+                            <img src="" alt=""> -->
+                    <div class="mb-4">
+                        <label for="profile_picture" class="block text-gray-900 mt-3">Photo de profil</label>
+                        <input type="file" id="profile_picture" accept="image/*"
+                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <p id="image-error" class="text-red-500 text-sm hidden">Veuillez sélectionner une image valide.
+                        </p>
+
+                    </div>
+
+
+                </div>
+                <form id="cv-form" class="p-6 rounded-lg shadow-md">
+                    <!-- Formulaire ici -->
+                    <!-- Formulaire -->
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700">Nom complet</label>
+                        <input type="text" id="name"
+                            class=" w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="poste" class="block text-gray-700">Poste</label>
+                        <input type="text" id="poste"
+                            class=" w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="phone" class="block text-gray-700">Telephone</label>
+                        <input type="text" id="phone"
+                            class=" w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700">E-mail</label>
+                        <input type="email" id="email"
+                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required>
+                        <div class="mb-4">
+                            <label for="statut" class="block text-gray-700"> Statut</label>
+                            <input type="text" id="statut"
+                                class=" w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="address" class="block text-gray-700">Addresse</label>
+                            <input type="text" id="address"
+                                class=" w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                required>
+                        </div>
+
+                    </div>
+
+
+                    <!-- FORMATIONS -->
+                    <div class="mb-4">
+                        <label class="block text-gray-700">Formations</label>
+                        <div id="formations-container">
+                            <div class="formation mb-4">
+                                <input type="text" placeholder="Diplôme"
+                                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2">
+                                <input type="text" placeholder="Établissement"
+                                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2">
+                                <input type="text" placeholder="Année"
+                                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                        </div>
+                        <button id="add-formation"
+                            class="bg-blue-500 text-white px-4 py-1 rounded-lg hover:bg-blue-600 mt-2">Ajouter une
+                            formation</button>
+                    </div>
+
+                    <!-- EXPERIENCES -->
+                    <div class="mb-4">
+                        <label class="block text-black uppercase mb-2 font-medium ">Expériences professionnelles</label>
+                        <div id="experiences-container">
+                            <div class="experience mb-4">
+                                <label class="block text-gray-700">Titre du poste</label>
+                                <input type="text" placeholder="Titre du poste"
+                                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2">
+                                <label class="block text-gray-700">Entreprise</label>
+                                <input type="text" placeholder="Entreprise"
+                                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2">
+                                <label class="block text-gray-700">Duree</label>
+                                <input type="text" placeholder="Durée (ex: 2020-2023)"
+                                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2">
+                                <label class="block text-gray-700">Description</label>
+                                <textarea placeholder="Description"
+                                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                            </div>
+                        </div>
+                        <button id="add-experience"
+                            class="bg-blue-500 text-white px-4 py-1 rounded-lg hover:bg-blue-600 ">Ajouter une
+                            expérience</button>
+                    </div>
+
+                    <!-- COMPETENCES -->
+                    <div class="mb-4">
+                        <label class="block text-gray-700">Competences</label>
+                        <div id="competences-container">
+                            <div class="competence mb-4">
+                                <input type="text" placeholder="competence"
+                                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2">
+                                <input type="text" placeholder="Niveau (ex: Débutant, Intermédiaire, professionnel)"
+                                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                        </div>
+                        <button id="add-competence"
+                            class="bg-blue-500 text-white px-4 py-1 rounded-lg hover:bg-blue-600 mt-2">Ajouter une
+                            competence</button>
+                    </div>
+
+                    <!-- LANGUES -->
+                    <div class="mb-4">
+                        <label class="block text-gray-700">Langues</label>
+                        <div id="languages-container">
+                            <div class="language mb-4">
+                                <input type="text" placeholder="Langue"
+                                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2">
+                                <input type="text" placeholder="Niveau (ex: Courant, Débutant)"
+                                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                        </div>
+                        <button id="add-language"
+                            class="bg-blue-500 text-white px-4 py-1 rounded-lg hover:bg-blue-600 mt-2">Ajouter une
+                            langue</button>
+                    </div>
+                    <!-- Ajoutez d'autres champs ici -->
+
+                </form>
+                <button type="submit" onclick="previewPDF()"
+                    class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Exporter</button>
+                <button id="clear-fields" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 mt-4">Vider
+                    les champs</button>
+            </div>
+            <div>
+
+                <!-- PREVISUALISATIION -->
+                <h1 class="text-2xl font-bold mb-4 text-black">Prévisualisation</h1>
+                <div class="lg:w p-4" id="cv-preview">
+                    <div class="rounded-lg">
+                        <div class="lg:flex">
+
+                            <!-- Colonne Gauche -->
+                            <div class="w-1/3 bg-gray-800 text-white p-6 rounded-tl-lg rounded-bl-lg" id="thheme">
+                                <!-- photo de profile -->
+                                <div class="text-center">
+                                    <img id="preview-image" src="#" alt="Photo de profil"
+                                        class="mt-2 w-24 h-24 rounded-full object-cover mx-auto hidden ">
+                                </div>
+                                <div class="mb-6">
+                                    <h2 id="preview-name" class=" text-center text-xl font-bold"> [NOM]</h2>
+                                    <p id="preview-poste" class="text-center">[Poste]</p>
+                                </div>
+                                <!-- Noms et informations personnelles !-->
+                                <div class="mb-6">
+                                    <div class="text-center mb-6">
+                                        <h5
+                                            class="text-lg font-semibold bg-gray-700 text-white py-2 px-4 rounded-full flex items-center justify-center">
+                                            CONTACT ME</h5>
+                                        <p id="preview-phone" class="flex items-center mt-4"></p>
+                                        <li id="preview-email" class="flex items-center mb-2"></li>
+                                        <li id="preview-statut" class="flex items-center mb-2"></li>
+                                        <li id="preview-address" class="flex items-center mb-2"></li>
+                                    </div>
+                                </div>
+                                <div class="text-center mb-6">
+                                    <h5
+                                        class="text-lg font-semibold bg-gray-700 text-white py-2 px-4 rounded-full flex items-center justify-center mt-4">
+                                        COMPETENCES</h5>
+                                    <div id="preview-competences">
+                                        <h3 class="text-lg font-bold mb-2"></h3>
+                                    </div>
+                                    <div class="text-center mb-6">
+
+                                        <!-- Langues -->
+                                        <h5
+                                            class="text-lg font-semibold bg-gray-700 text-white py-2 px-4 rounded-full flex items-center justify-center mt-4">
+                                            LANGUES</h5>
+                                        <div id="preview-languages">
+                                            <h3 id="lang" class="text-lg font-bold mb-2"></h3>
+                                            <!-- Les langues seront ajoutées ici dynamiquement -->
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Colonne Droite -->
+                            <div class="w-2/3 p-6"><!-- Formations -->
+                                <h2 class="text-xl font-bold mb-4">FORMATIONS</h2>
+
+                                <div id="preview-formations" class="mb-6">
+                                    <h3 class="text-lg font-bold mb-2"></h3>
+                                    <!-- Les formations seront ajoutées ici dynamiquement -->
+                                </div>
+
+                                <h2 class="text-xl font-bold mb-4">EXPERIENCES PROFESSIONNELLES</h2>
+                                <div id="preview-experiences" class="mb-6">
+                                    <h3 class="text-lg font-bold mb-2"></h3>
+                                    <!-- Les expériences seront ajoutées ici dynamiquement -->
+                                </div>
+
+
+
+                                <!-- IMAGE PREVIEW -->
+                                <!-- <img id="preview-profil" src="#" alt="Prévisualisation de la photo de profil" class="mt-2 w-24 h-24 rounded-full object-cover mx-auto hidden">
+                           
+                            <div class="container mx-auto p-3 mt-8 bg-white rounded-lg shadow-md">
+                                <h2 id="preview-name" class="text-xl font-bold text-black"></h2>
+                            </div>
+                            <div class="container mx-auto p-3 mt-8 bg-white rounded-lg shadow-md">
+                                <h2 id="preview-email" class="text-black"></h2>
+                            </div>
+                        
+                     </div> -->
+
+
+
+
+
+                                <!-- Répétez pour les autres expériences professionnelles -->
+
+                                <!-- <h2 class="text-2xl font-bold mt-8 mb-4">REFERENCES</h2>
+                                <div class="flex justify-between">
+                                    <div>
+                                        <h3 id="preview-reference1Nom" class="font-semibold">Harumi Kobayashi</h3>
+                                        <p>Wardiere Inc. / CEO</p>
+                                        <p>Phone: 123-456-7890</p>
+                                        <p>Email: hello@reallygreatsite.com</p>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold">Bailey Dupont</h3>
+                                        <p>Wardiere Inc. / CEO</p>
+                                        <p>Phone: 123-456-7890</p>
+                                        <p>Email: hello@reallygreatsite.com</p> -->
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <!-- Expériences professionnelles -->
+
+
+
+    </div>
+
+
+
+
+    <!-- Contenu de la page -->
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+</body>
+
+</html>

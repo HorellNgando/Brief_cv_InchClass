@@ -1,0 +1,52 @@
+
+#thheme{
+    
+}
+/* Thème par défaut */
+.theme-default {
+    background-color: #ffffff;
+    color: #000000;
+   
+}
+
+.theme-default #thheme{
+    background-color: rgb(138, 198, 187);
+}
+
+.theme-default h5{
+    background-color: rgb(9, 109, 91);
+   color: #ffffff;
+}
+
+/* Thème moderne */
+.theme-modern {
+    background-color: #f3f4f6 ;
+    color: rgb(30, 64, 175);
+}
+.theme-default #lang{
+color: #ffffff;
+}
+ 
+.theme-modern #thheme{
+    background-color: rgb(184, 183, 215);
+}
+
+
+
+
+
+/* Thème classique */
+.theme-classic {
+    background-color: #f7fafc;
+    color: #2d3748;
+}
+
+.theme-classic #thheme {
+    background-color: #cbcbc7;
+    color: #000000;
+}
+
+.theme-classic h5 {
+    background-color: #4c4c3e;
+    color: #ffff;
+}

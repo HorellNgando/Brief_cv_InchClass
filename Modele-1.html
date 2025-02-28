@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+    <title>Modèle-1</title>
+</head>
+<body class="bg-gray-100 flex justify-center py-10 ">
+     <!-- Header -->
+     <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between h-full">
+            <!-- Logo à gauche -->
+            <div class="flex-shrink-0 flex items-center">
+              <a href="home.html"><img class="size-20" src="image/Sans titre-29.png" alt="Logo"></a>
+            </div>
+    
+            <!-- Bouton de menu pour les petits écrans -->
+            <div class="flex items-center md:hidden">
+              <button id="menu-button" class="text-gray-700 hover:text-gray-900 focus:outline-none">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+              </button>
+            </div>
+    
+            <!-- Onglets et boutons pour les écrans larges -->
+            <div class="hidden md:flex md:items-center md:space-x-8">
+              <a href="#" class="text-[#2E6E7A] hover:underline transition duration-300 ease-in-out hover:decoration-2 hover:underline-offset-4 hover:decoration-[#2E6E7A] px-3 py-2 rounded-md text-md font-medium">Accueil</a>
+              <a href="#" class="text-[#2E6E7A] hover:underline transition duration-300 ease-in-out hover:decoration-2 hover:underline-offset-4 hover:decoration-[#2E6E7A] px-3 py-2 rounded-md text-md font-medium">Modèles</a>
+              <a href="#" class="text-[#2E6E7A] hover:underline transition duration-300 ease-in-out hover:decoration-2 hover:underline-offset-4 hover:decoration-[#2E6E7A] px-3 py-2 rounded-md text-md font-medium">Tarifs</a>
+              <a href="#" class="text-[#2E6E7A] hover:underline transition duration-300 ease-in-out hover:decoration-2 hover:underline-offset-4 hover:decoration-[#2E6E7A] px-3 py-2 rounded-md text-md font-medium">FAQs</a>
+            </div>
+    
+            <!-- Boutons à droite pour les écrans larges -->
+            <div class="hidden md:flex md:items-center md:space-x-4">
+              <button class="bg-[#fff] hover:bg-[#58D2E9] text-[#2E6E7A] border-2  border-[#2E6E7A] font-bold py-2 px-4 rounded">
+                Connexion
+              </button>
+              <button class="bg-[#3B8D9B] hover:bg-[#fff] text-white border-2  border-[#2E6E7A] hover:text-[#2E6E7A] font-bold py-2 px-4 rounded">
+                Créer un CV
+              </button>
+            </div>
+          </div>
+    
+          <!-- Menu déroulant pour les petits écrans -->
+          <div id="mobile-menu" class="hidden md:hidden">
+            <div class="flex flex-col space-y-2 pb-3">
+              <a href="#" class="text-[#2E6E7A] hover:underline transition duration-300 ease-in-out hover:decoration-2 hover:underline-offset-4 hover:decoration-[#2E6E7A] px-3 py-2 rounded-md text-md font-medium">Accueil</a>
+              <a href="#" class="text-[#2E6E7A] hover:underline transition duration-300 ease-in-out hover:decoration-2 hover:underline-offset-4 hover:decoration-[#2E6E7A] px-3 py-2 rounded-md text-md font-medium">Modèles</a>
+              <a href="#" class="text-[#2E6E7A] hover:underline transition duration-300 ease-in-out hover:decoration-2 hover:underline-offset-4 hover:decoration-[#2E6E7A] px-3 py-2 rounded-md text-md font-medium">Tarifs</a>
+              <a href="#" class="text-[#2E6E7A] hover:underline transition duration-300 ease-in-out hover:decoration-2 hover:underline-offset-4 hover:decoration-[#2E6E7A] px-3 py-2 rounded-md text-md font-medium">FAQs</a>
+              <button class="bg-[#fff] hover:bg-[#58D2E9] text-[#2E6E7A] border-2  border-[#2E6E7A] font-bold py-2 px-4 rounded">
+                Connexion
+              </button>
+              <button class="bg-[#3B8D9B] hover:bg-[#fff] text-white border-2  border-[#2E6E7A] hover:text-[#2E6E7A] font-bold py-2 px-4 rounded">
+                Créer un CV
+              </button>
+            </div>
+          </div>
+        </div>
+    </nav>
+    
+    <div class="w-full max-w-4xl bg-white shadow-lg flex flex-col md:flex-row">
+        <!-- Colonne Gauche -->
+        <div class="w-full md:w-1/3 bg-gray-100 p-6">
+            <img class="mt-2 w-32 h-32 rounded-full object-cover mx-auto" src="../images/PHOTOO.jpg" alt="Photo de profil">
+            <h2 class="text-center text-xl font-bold mt-4">Melvine YIMGA </h2>
+            <p class="text-center text-gray-600">Marketing Manager</p>
+            
+            <h2 class="mt-6 text-l font-bold w-full mt-4 bg-[#454541] text-white py-2 rounded-full text-center">INFORMATIONS </h2>
+            <ul class="mt-4 space-y-2 text-gray-700">
+                <li>&#9742; +237 680 994 956</li>
+                <li>&#9993; bamilonaise@gmail.com</li>
+                <li>&#9993; 23 ans</li>
+                <li>&#9993; Celibataire</li>
+                <li>&#127968; Douala,Mobile Guiness</li>
+            </ul>
+            
+            <h3 class="mt-6 text-lg font-bold w-full mt-4 bg-[#454541] text-white py-2 rounded-full text-center">SKILLS</h3>
+                <ul class="mt-2 text-gray-700 space-y-1">
+                    <li>• UI/UX</li>
+                    <li>• Visual Design</li>
+                    <li>• Wireframes</li>
+                    <li>• Storyboards</li>
+                    <li>• User Flows</li>
+                </ul>
+            
+            <h3 class="mt-6 text-lg font-bold w-full mt-4 bg-[#454541] text-white py-2 rounded-full text-center">LANGUES</h3>
+                <ul class="mt-2 text-gray-700 space-y-1">
+                        <li>• Anglais</li>
+                        <li>• Français</li>
+                </ul>
+        
+        </div>
+        
+        <!-- Colonne Droite -->
+        <div class="w-full md:w-2/3 p-6">
+            <h2 class="text-2xl font-bold">FORMATIONS </h2>
+            <div class="mt-2 text-gray-700">
+                <span class="md:float-right block">2019 - 2022</span>  <p class="font-bold">Course Studied</p> 
+                <p>University/College Details</p> 
+            </div>
+            <div class="mt-2 text-gray-700">
+                <span class="md:float-right block">2019 - 2022</span> <p class="font-bold">Course Studied</p>
+                <p>University/College Details</p>
+            </div>
+            <div class="mt-2 text-gray-700">
+                <span class="md:float-right block">2019 - 2022</span> <p class="font-bold">Course Studied</p>
+                <p>University/College Details</p> 
+            </div>
+
+
+
+
+
+
+
+
+            <h2 class="text-2xl font-bold mt-4">EXPERIENCES PROFESSIONNELLES</h2>
+            <div class="mt-4">
+                <p class="font-bold">Job position here <span class="md:float-right block">2019 - 2022</span></p>
+                <p class="text-gray-700 font-semibold">Company Name | Location</p>
+                <p class="text-gray-600 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div class="mt-4">
+                <p class="font-bold">Job position here <span class="md:float-right block">2017 - 2019</span></p>
+                <p class="text-gray-700 font-semibold">Company Name | Location</p>
+                <p class="text-gray-600 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            
+            <h2 class="mt-6 text-2xl font-bold">REFERENCES</h2>
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <p class="font-bold">Harumi Kobayashi</p>
+                    <p class="text-gray-700">Wardiere Inc. / CEO</p>
+                    <p class="text-gray-600 text-sm">Phone: 123-456-7890</p>
+                    <p class="text-gray-600 text-sm">Email: hello@reallygreatsite.com</p>
+                </div>
+                <div>
+                    <p class="font-bold">Bailey Dupont</p>
+                    <p class="text-gray-700">Wardiere Inc. / CEO</p>
+                    <p class="text-gray-600 text-sm">Phone: 123-456-7890</p>
+                    <p class="text-gray-600 text-sm">Email: hello@reallygreatsite.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
